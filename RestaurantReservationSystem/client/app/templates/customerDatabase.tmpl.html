@@ -1,0 +1,59 @@
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav nav-pills">
+                <li><a href="#/adminAccess">Profile</a></li>
+                <li><a href="#/adminAccess/adminReservations">Reservations</a></li>
+                <li class="active"><a href="#/adminAccess/customerDatabase">Customer Database</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="row" ng-init="customerDatabaseVm.getAllCustomers()">
+        <table class="table table-hover table-responsive">
+            <thead>
+            <tr>
+
+                <th ng-click="sort('customerId')">Customer Id
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='customerId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('fname')">First Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='fname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('lname')">Last Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='lname'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('emailId')">Email Id
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='emailId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('phoneNumber')">Phone Number
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='phoneNumber'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr dir-paginate="customer in customerDatabaseVm.customerList | orderBy:sortKey:reverse | filter:customerDatabaseVm.search | itemsPerPage :5">
+                <td>{{customer.customerId}}</td>
+                <td>{{customer.fname}}</td>
+                <td>{{customer.lname}}</td>
+                <td>{{customer.emailId}}</td>
+                <td>{{customer.phoneNumber}}</td>
+            </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls
+                max-size="5"
+                direction-links="true"
+                boundary-links="true" >
+        </dir-pagination-controls>
+    </div>
+
+</div>
+

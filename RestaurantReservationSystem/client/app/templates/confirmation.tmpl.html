@@ -1,0 +1,15 @@
+<div class = "container">
+
+    <div ng-show="confirmationVm.status">
+        <h2>Thank you for reserving a table</h2><br><br>
+        <h3>Your reservation number is : {{confirmationVm.confirmationNumber}}</h3><br> <br>
+        <h3>We look forward to seeing you at our restaurant.</h3>
+    </div>
+
+    <div ng-show="!confirmationVm.status">
+        <h3>At this moment we do not have any available table for the specified time. However we are putting you in the waiting queue.</h3><br>
+        <h3>Your reservation number is : {{confirmationVm.confirmationNumber}}</h3><br>
+        <h3>You can visit our <strong><a href="#/manageReservation">Manage Reservation</a></strong> page to check for the reservation status.</h3>
+        <h3>We look forward to seeing you at our restaurant.</h3>
+    </div>
+</div>

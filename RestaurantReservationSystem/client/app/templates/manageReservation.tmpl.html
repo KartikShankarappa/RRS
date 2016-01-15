@@ -1,0 +1,171 @@
+<!-- For Search Field -->
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <form class="form-search" ng-submit = "manageReservationVm.findReservationById()">
+                <div class="input-append">
+                    <input type="text" name="search" class="search-query span3" ng-model = "manageReservationVm.id" placeholder="Enter the Reservation Number to retrieve a specific reservation"style="width:90%;">
+                    <button type="submit" class="btn btn-info">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--<div class="row" ng-if = "manageReservationVm.show">-->
+    <!--<table class="table table-hover table-responsive">-->
+    <!--<thead>-->
+    <!--<tr>-->
+    <!--<th>Confirmation #</th>-->
+    <!--<th>Table #</th>-->
+    <!--<th>First Name</th>-->
+    <!--<th>Last Name</th>-->
+    <!--<th>Email Id</th>-->
+    <!--<th>Phone Number</th>-->
+    <!--<th>Party Size</th>-->
+    <!--<th>Date</th>-->
+    <!--<th>Time</th>-->
+    <!--<th>Status</th>-->
+    <!--<th>Edit / Cancel</th>-->
+    <!--</tr>-->
+    <!--</thead>-->
+
+    <!--<tbody>-->
+    <!--<tr>-->
+    <!--<td>{{manageReservationVm.response.confirmationNumber}}</td>-->
+    <!--<td>{{manageReservationVm.response.tableNumber}}</td>-->
+    <!--<td>{{manageReservationVm.response.firstName}}</td>-->
+    <!--<td>{{manageReservationVm.response.lastName}}</td>-->
+    <!--<td>{{manageReservationVm.response.emailId}}</td>-->
+    <!--<td>{{manageReservationVm.response.phoneNumber}}</td>-->
+    <!--<td>{{manageReservationVm.response.partySize}}</td>-->
+    <!--<td>{{manageReservationVm.response.date}}</td>-->
+    <!--<td>{{manageReservationVm.response.time}}</td>-->
+    <!--<td>{{manageReservationVm.response.reservationStatus}}</td>-->
+    <!--<td><button class="btn btn-info" onclick = "location.href = '#/editReservation'" type = "submit">Edit / Cancel</button></td>-->
+    <!--</tr>-->
+    <!--</tbody>-->
+    <!--</table>-->
+    <!--</div>-->
+
+
+    <div ng-if="manageReservationVm.show">
+        <div>
+            <span><h3>Your Reservation details: </h3></span>
+        </div>
+        <br>
+
+        <table class="table" >
+            <tbody>
+            <tr>
+                <td><b>Reservation Number</b></td>
+                <td>{{manageReservationVm.reservationData.confirmationNumber}}</td>
+            </tr>
+            <tr>
+                <td><b>Table Number</b></td>
+                <td>{{manageReservationVm.reservationData.tableNumber}}</td>
+            </tr>
+            <tr>
+                <td><b>First Name</b></td>
+                <td><a href="#" editable-text="data.firstName">{{ data.firstName || 'empty' }}</a></td>
+            </tr>
+            <tr>
+                <td><b>Last Name</b></td>
+                <td><a href="#" editable-text="data.lastName">{{ data.lastName || 'empty' }}</a></td>
+            </tr>
+            <tr>
+                <td><b>Email Id</b></td>
+                <td><a href="#" editable-email="data.emailId">{{ data.emailId || 'empty' }}</a></td>
+            </tr>
+            <tr>
+                <td><b>Phone Number</b></td>
+                <td><a href="#" editable-text="data.phoneNumber" e-min="10" e-max="10">{{ data.phoneNumber || 'empty' }}</a></td>
+            </tr>
+            <tr>
+                <td><b>Party Size</b></td>
+                <td><a href="#" editable-number="data.partySize" e-min="1" e-max="8">{{ data.partySize || 'empty' }}</a></td>
+            </tr>
+            <!--<tr>-->
+            <!--<td><b>Date</b></td>-->
+            <!--<td><a href="#" editable-date="data.date">{{ data.date || 'empty' }}</a></td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td><b>Time</b></td>-->
+            <!--<td><a href="#" editable-time="data.time">{{ data.time || 'empty' }}</a></td>-->
+            <!--</tr>-->
+            <tr>
+                <td><b>Date</b></td>
+                <td><a href="#" editable-text="data.date">{{ data.date || 'empty' }}</a></td>
+            </tr>
+            <tr>
+                <td><b>Time</b></td>
+                <td><a href="#" editable-text="data.time">{{ data.time || 'empty' }}</a></td>
+            </tr>
+            <tr>
+                <td><b>Status</b></td>
+                <td>{{manageReservationVm.reservationData.reservationStatus}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div style="display: inline">
+            <!--<button type="submit" class="btn btn-info" ng-click="manageReservationVm.editReservation()">Save Changes</button>-->
+            <!--<button type="submit" class="btn btn-info" ng-click="manageReservationVm.cancelReservation()">Cancel Reservation</button>-->
+
+
+            <!--START Update Reservation Modal -->
+            <script type="text/ng-template" id="updateReservation.html">
+                <div class="modal-body" align="center">
+                    <p> Do you really want to modify your reservation?</p>
+                    <br>
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+
+            <button type="button" class="btn btn-info" ng-click="modalUpdate()">Save Changes</button>
+            <!--END Update Reservation Modal -->
+
+
+
+            <!--START Cancel Reservation Modal -->
+            <script type="text/ng-template" id="cancelReservation.html">
+                <div class="modal-body" align="center">
+                    <p> Do you really want to cancel the reservation?</p>
+                    <br>
+                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                </div>
+            </script>
+
+            <button type="button" class="btn btn-info" ng-click="modalCancel()">Cancel Reservation</button>
+            <!--END Cancel Reservation Modal -->
+
+
+
+        </div>
+        <br>
+        <br>
+        <br>
+
+
+    </div>
+
+
+
+    <div ng-if = "manageReservationVm.noRecordsShow">
+        <br>
+        <h3>No records found for the specified reservation number.</h3>
+    </div>
+
+    <div ng-if = "manageReservationVm.updateSuccesful">
+        <br>
+        <h3>Your reservation has been modified successfully.</h3>
+    </div>
+
+    <div ng-if = "manageReservationVm.cancelSuccessful">
+        <br>
+        <h4>Your reservation has been cancelled. Please visit our <a href="#/reservation">RESERVATION</a> page if you would like to book another reservation.</h4>
+    </div>
+    <br>
+    <br>
+</div>
