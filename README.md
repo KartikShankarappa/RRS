@@ -1,1 +1,1 @@
-### Restaurant Reservation System REST API ###
+### Restaurant Reservation System ###
