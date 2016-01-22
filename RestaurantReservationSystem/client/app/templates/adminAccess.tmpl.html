@@ -1,0 +1,42 @@
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav nav-pills">
+                <li class="active"><a href="#/adminAccess">Profile</a></li>
+                <li><a href="#/adminAccess/adminReservations">Reservations</a></li>
+                <li><a href="#/adminAccess/customerDatabase">Customer Database</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" ng-init="adminAccessVm.getRestaurantDetails()" ng-show="!adminAccessVm.updateSuccessful">
+        <div id="contact-details">
+            <h4>Click on the fields to edit the information</h4><br>
+            <h4><b>Restaurant Name</b> : <a href="#" editable-text="adminAccessVm.restaurantDetails.restaurantName">{{ adminAccessVm.restaurantDetails.restaurantName || 'empty' }}</a></h4><br>
+            <h4><b>Email Id</b> : <a href="#" editable-text="adminAccessVm.restaurantDetails.emailId">{{ adminAccessVm.restaurantDetails.emailId || 'empty' }}</a></h4><br>
+            <h4><b>Address</b> : <br><a href="#" editable-text="adminAccessVm.restaurantDetails.address">{{ adminAccessVm.restaurantDetails.address || 'empty' }}</a><br>
+                <a href="#" editable-text="adminAccessVm.restaurantDetails.city">{{ adminAccessVm.restaurantDetails.city || 'empty' }}</a><br>
+                <a href="#" editable-text="adminAccessVm.restaurantDetails.state">{{ adminAccessVm.restaurantDetails.state || 'empty' }}</a><br>
+                <a href="#" editable-text="adminAccessVm.restaurantDetails.zip">{{ adminAccessVm.restaurantDetails.zip || 'empty' }}</a><br>
+            </h4><br>
+            <h4><b>Contact Number</b> : +1 <a href="#" editable-text="adminAccessVm.restaurantDetails.phoneNumber">{{ adminAccessVm.restaurantDetails.phoneNumber || 'empty' }}</a></h4><br>
+            <h4><b>Days of Operation</b> : <a href="#" editable-text="adminAccessVm.restaurantDetails.daysOfOperation">{{ adminAccessVm.restaurantDetails.daysOfOperation || 'empty' }}</a></h4><br>
+            <h4><b>Opening Time</b> : <a href="#" editable-text="adminAccessVm.restaurantDetails.openingTime">{{ adminAccessVm.restaurantDetails.openingTime || 'empty' }}</a></h4><br>
+            <h4><b>Closing Time</b> : <a href="#" editable-text="adminAccessVm.restaurantDetails.closingTime">{{ adminAccessVm.restaurantDetails.closingTime || 'empty' }}</a></h4><br>
+
+
+            <button type="button" class="btn btn-info" ng-click="adminAccessVm.modifyRestaurantDetails()">Save Changes</button>
+
+            <br>
+            <br>
+            <br>
+
+        </div>
+    </div>
+
+    <div ng-show="adminAccessVm.updateSuccessful">
+        <h3>The details have been successfully updated.</h3>
+    </div>
+
+</div>

@@ -1,0 +1,110 @@
+<div class="container">
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <ul class="nav nav-pills">
+                <li><a href="#/adminAccess">Profile</a></li>
+                <li class="active"><a href="#/adminAccess/adminReservations">Reservations</a></li>
+                <li><a href="#/adminAccess/customerDatabase">Customer Database</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label >Search</label>
+            <input type="text" ng-model="adminReservationsVm.search" class="form-control" placeholder="Enter a Search String">
+        </div>
+    </form>
+    <br>
+
+
+    <div class="row" ng-init="adminReservationsVm.getAllReservations()">
+        <table class="table table-hover table-responsive">
+            <thead>
+            <tr>
+
+
+
+                <!--<th>Confirmation #</th>-->
+                <!--<th>Table #</th>-->
+                <!--<th>First Name</th>-->
+                <!--<th>Last Name</th>-->
+                <!--<th>Email Id</th>-->
+                <!--<th>Phone Number</th>-->
+                <!--<th>Party Size</th>-->
+                <!--<th>Date</th>-->
+                <!--<th>Time</th>-->
+                <!--<th>Status</th>-->
+                <!--<th>Edit / Cancel</th>-->
+
+                <th ng-click="sort('confirmationNumber')">Confirmation #
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='confirmationNumber'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('tableNumber')">Table #
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='tableNumber'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('firstName')">First Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='firstName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('lastName')">Last Name
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='lastName'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('emailId')">Email Id
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='emailId'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('phoneNumber')">Phone Number
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='phoneNumber'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('partySize')">Party Size
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='partySize'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('date')">Date
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='date'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('time')">Time
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='time'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th ng-click="sort('reservationStatus')">Status
+                    <span class="glyphicon sort-icon" ng-show="sortKey=='reservationStatus'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr dir-paginate="resList in adminReservationsVm.reservationsList | orderBy:sortKey:reverse | filter:adminReservationsVm.search | itemsPerPage :5">
+                <td>{{resList.confirmationNumber}}</td>
+                <td>{{resList.tableNumber}}</td>
+                <td>{{resList.firstName}}</td>
+                <td>{{resList.lastName}}</td>
+                <td>{{resList.emailId}}</td>
+                <td>{{resList.phoneNumber}}</td>
+                <td>{{resList.partySize}}</td>
+                <td>{{resList.date}}</td>
+                <td>{{resList.time}}</td>
+                <td>{{resList.reservationStatus}}</td>
+                <!--<td><button class="btn btn-info" onclick = "location.href = '#/editReservation'" type = "submit">Edit / Cancel</button></td>-->
+            </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls
+                max-size="5"
+                direction-links="true"
+                boundary-links="true" >
+        </dir-pagination-controls>
+    </div>
+
+</div>
+

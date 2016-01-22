@@ -1,0 +1,24 @@
+#date, #time {
+	width:	15%;
+}
+
+#partysize {
+	width: 35%;
+}
+
+
+#reservation-navs > ul > li > a {
+	background-color: #f0ad4e;
+}
+
+
+.full button span {
+	background-color: limegreen;
+	border-radius: 32px;
+	color: black;
+}
+.partially button span {
+	background-color: orange;
+	border-radius: 32px;
+	color: black;
+}

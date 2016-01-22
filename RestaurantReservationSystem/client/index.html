@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>
+<p>You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+
+<html ng-app="rrsApp">
+
+  <head>
+    <title>Chevy's Fresh Mex</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">-->
+
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">-->
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/angular.js"></script>
+      <script src="js/angular.min.js"></script>
+      <script src="js/angular-route.js"></script>
+      <script src="js/angular-animate.js"></script>
+      <script src="js/ui-bootstrap-tpls-1.0.0.min.js"></script>
+      <script src="js/xeditable.js"></script>
+      <script src="js/dirPagination.js"></script>
+      <script src="app/app.js"></script>
+
+
+    <link rel="stylesheet" href="css/xeditable.css" >
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/contact_us.css">
+
+
+
+
+  </head>
+
+  <body>
+
+  <div id = "wrapper">
+    <div id="header-container" class="container">
+      <header id="header" class="page-header">
+        <p id="header-text">!!! Welcome to Chevy's Fresh Mex - We don’t make it until you order it !!!</p>
+      </header>
+    </div>
+
+
+
+    <div class="container" style="background : transparent;">
+        <nav id="navigation-bar" class="navbar navbar-default" ng-controller="HomeController as homeVm">
+            <div class="container-fluid">
+                
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed-navbar" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- <a class="navbar-brand" href="home.html"><div id="nav-item-title">Chevys Fresh Mex</div></a>&nbsp; -->
+                    <a href=""><img id = "logo" src="images/chevys_logo_transparent.jpg"></a>
+                </div>
+
+                
+
+                <div id="collapsed-navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#/home"><div id="nav-item-title">Home</div></a></li>
+                        <li><a href="#/menu"><div id="nav-item-title">Menu</div></a></li>
+                        <li><a href="#/reservation"><div id="nav-item-title">Reservation</div></a></li>
+                        <li><a href="#/manageReservation"><div id="nav-item-title">Manage Reservation</div></a></li>
+                        <!--<li><a href="#/events"><div id="nav-item-title">Events</div></a></li>-->
+                        <li><a href="#/contact_us"><div id="nav-item-title">Contact Us</div></a></li>
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                      <li class="dropdown" id="menuLogin">
+
+                        <a class="dropdown-toggle" href="#/login" data-toggle="dropdown" id="navLogin" ng-show="!homeVm.hasloggedIn"><div id="nav-item-title"><i class="fa fa-user"></i> Login</div></a>
+
+                        <a class="dropdown-toggle" href="" data-toggle="dropdown" id="navLogin" ng-show="homeVm.hasloggedIn" ng-click="isCollapsed = !isCollapsed"><div id="nav-item-title"><i class="fa fa-user"></i> Owner</div></a>
+                        <div uib-collapse="isCollapsed">
+                          <a class="dropdown-toggle" href="#/adminAccess" data-toggle="dropdown" id="navLogin""><div id="nav-item-title"></i> Profile</div></a></a>
+                          <a class="dropdown-toggle" href="" data-toggle="dropdown" id="navLogin" ng-click="homeVm.logout()"><div id="nav-item-title"></i> Logout</div></a>
+                        </div>
+                    </ul>
+                </div>
+                
+            </div>
+            
+        </nav>
+    </div>
+
+    <div class = "container">
+        <div ng-view></div>
+    </div>
+
+    <br><br>
+    <footer id="footer" class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6">
+          <p id="footer-glyphs">
+            <i class="fa fa-facebook-official fa-lg"></i>
+            <i class="fa fa-twitter-square fa-lg"></i>
+            <i class="fa fa-youtube fa-lg"></i>
+            <i class="fa fa-google-plus-square fa-lg"></i>
+            <i class="fa fa-instagram fa-lg"></i>
+            <i class="fa fa fa-yelp fa-lg"></i>
+          </p>
+        </div>
+        <div class="col-xs-6"><p id="footer-text"><i class="fa fa-copyright fa-1x"></i> 2015 Chevy's Fresh Mex</p></div>
+      </div>
+    </footer>
+
+  </div>
+
+    
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
+    <!--<script src="https://code.angularjs.org/1.4.7/angular.js"></script>-->
+    <!--<script src="https://code.angularjs.org/1.4.7/angular-route.js"></script>-->
+
+
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>-->
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>-->
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <!--<script src="js/bootstrap.min.js"></script>-->
+    <!--<script src="js/angular.js"></script>-->
+    <!--<script src="js/angular.min.js"></script>-->
+    <!--<script src="js/angular-route.js"></script>-->
+    <!--<script src="js/angular-animate.js"></script>-->
+    <!--<script src="js/ui-bootstrap-tpls-1.0.0.min.js"></script>-->
+    <!--<script src="js/xeditable.js"></script>-->
+    <!--<script src="js/dirPagination.js"></script>-->
+    <!--<script src="app/app.js"></script>-->
+
+    <!-- Controllers -->
+    <script src="app/controllers/home.controller.js"></script>
+    <script src="app/controllers/menu.controller.js"></script>
+    <script src="app/controllers/reservation.controller.js"></script>
+    <script src="app/controllers/manageReservation.controller.js"></script>
+    <script src="app/controllers/confirmation.controller.js"></script>
+    <script src="app/controllers/events.controller.js"></script>
+    <script src="app/controllers/contactUs.controller.js"></script>
+    <script src="app/controllers/error.controller.js"></script>
+    <script src="app/controllers/login.controller.js"></script>
+    <script src="app/controllers/adminAccess.controller.js"></script>
+    <script src="app/controllers/adminReservations.controller.js"></script>
+    <script src="app/controllers/customerDatabase.controller.js"></script>
+
+
+    <!-- Services -->
+    <script src="app/services/reservation.service.js"></script>
+    <script src="app/services/sharedData.service.js"></script>
+    <script src="app/services/contactUs.service.js"></script>
+    <script src="app/services/login.service.js"></script>
+    <script src="app/services/adminAccess.service.js"></script>
+
+  </body>
+
+</html>
